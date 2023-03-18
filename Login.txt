@@ -1,0 +1,104 @@
+package com.gui;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+
+public class TestLoginForm extends JFrame implements ActionListener{
+
+	JLabel lblUserName ;//= new JLabel("Enter User Name");
+	JLabel lblPwd ;
+	JTextField txtusername ;
+	JPasswordField txtpwd  ;
+	JButton btnLogin  ;
+	JButton btnclear ;
+	public TestLoginForm() {
+		
+		lblUserName = new JLabel("Enter User Name");
+		lblPwd = new JLabel("Enter Password");
+		txtusername = new JTextField();
+		txtpwd = new JPasswordField();
+		btnLogin = new JButton("Login");
+		btnclear = new JButton("Clear");
+		
+		this.setLayout(null);// imp
+		this.setTitle("Login Form");
+		this.setBounds(100, 100, 400, 400);
+		this.setVisible(true);//imp
+		
+		lblUserName.setBounds(50, 70, 200, 30);
+		// lblUserName.setFont(new Font("Arial",Font.BOLD, 20));
+		this.add(lblUserName);
+
+		
+		lblPwd.setBounds(50, 150, 200, 30);
+		this.add(lblPwd);
+
+		// accept input :textField
+		
+		txtusername.setBounds(200, 70, 200, 30);
+		;
+		this.add(txtusername);
+
+		
+		txtpwd.setBounds(200, 150, 200, 30);
+		this.add(txtpwd);
+
+		
+		btnLogin.setBounds(200, 200, 100, 30);
+		this.add(btnLogin);
+
+		
+		btnclear.setBounds(320, 200, 100, 30);
+		this.add(btnclear);
+		
+		
+		
+		//assign function to listner
+		
+		this.btnLogin.addActionListener(this);//IMP
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new TestLoginForm();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		 
+	//System.out.println("-----clicked on button ");	
+		
+	JOptionPane.showMessageDialog(this, "You clicked On Button");
+		
+	String username=txtusername.getText();//content of textbox	
+		
+	String pwd=txtpwd.getText();
+	System.out.println(username +"    "+pwd);	
+	
+	if(username.equals("seed")&& pwd.equals("seed@123"))
+	{
+		System.out.println("valid");
+		JOptionPane.showMessageDialog(this, "done");
+	}
+	else
+	{
+		System.out.println("invalid");
+		JOptionPane.showMessageDialog(this, "enter correct username or pwd");
+	}
+		
+	}
+
+}

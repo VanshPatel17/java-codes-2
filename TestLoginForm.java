@@ -1,59 +1,97 @@
-import java.awt.Font;
+package com.gui;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class TestLoginForm extends JFrame {
+import javax.swing.*;
+
+public class TestLoginForm extends JFrame implements ActionListener {
+
+	JLabel lblUserName;// = new JLabel("Enter User Name");
+	JLabel lblPwd;
+	JTextField txtusername;
+	JPasswordField txtpwd;
+	JButton btnLogin;
+	JButton btnclear;
 
 	public TestLoginForm() {
 
+		lblUserName = new JLabel("Enter User Name");
+		lblPwd = new JLabel("Enter Password");
+		txtusername = new JTextField();
+		txtpwd = new JPasswordField();
+		btnLogin = new JButton("Login");
+		btnclear = new JButton("Clear");
+
+		this.setLayout(null);// imp
 		this.setTitle("Login Form");
 		this.setBounds(100, 100, 400, 400);
-		this.setVisible(true);//imp
-		
-		//lable to give purpose
-		 //default layout is Border Layout
-		
-		this.setLayout(null);//imp
-		
-		JLabel lblUserName=new JLabel("Enter User Name");
-		lblUserName.setBounds(50, 70, 200	, 30);
-		//lblUserName.setFont(new  Font("Arial",Font.BOLD, 20));
+		this.setVisible(true);// imp
+
+		lblUserName.setBounds(50, 70, 200, 30);
+		// lblUserName.setFont(new Font("Arial",Font.BOLD, 20));
 		this.add(lblUserName);
-		
-		JLabel lblPwd=new JLabel("Enter Password");
+
 		lblPwd.setBounds(50, 150, 200, 30);
 		this.add(lblPwd);
-		
-		
-		//accept input :textField
-		JTextField txtusername=new JTextField();
-		txtusername.setBounds(200,70,200,30);;
+
+		// accept input :textField
+
+		txtusername.setBounds(200, 70, 200, 30);
+		;
 		this.add(txtusername);
-		
-		JPasswordField txtpwd=new JPasswordField();
+
 		txtpwd.setBounds(200, 150, 200, 30);
 		this.add(txtpwd);
-		
-		
-		JButton btnLogin=new JButton("Login");
+
 		btnLogin.setBounds(200, 200, 100, 30);
-		this.add(btnLogin);		
-		
-		JButton btnclear=new JButton("Clear");
+		this.add(btnLogin);
+
 		btnclear.setBounds(320, 200, 100, 30);
-		this.add(btnclear);		
+		this.add(btnclear);
+
+		// assign function to listner
+
+		 this.btnLogin.addActionListener(this);// IMP
+		 this.btnclear.addActionListener(this);
+		;
+
 	}
-public void sayHello()
-{
-	System.out.println("----login----");
-}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		new TestLoginForm();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+
+		// System.out.println("-----clicked on button ");
+
+		if (e.getSource() == btnLogin) {
+			JOptionPane.showMessageDialog(this, "You clicked On Login Button");
+
+			String username = txtusername.getText();// content of textbox
+
+			String pwd = txtpwd.getText();
+			System.out.println(username + "    " + pwd);
+
+			if (username.equals("seed") && pwd.equals("seed@123")) {
+				System.out.println("valid");
+				JOptionPane.showMessageDialog(this, "done");
+			} else {
+				System.out.println("invalid");
+				JOptionPane.showMessageDialog(this, "enter correct username or pwd");
+			}
+
+		} else if (e.getSource() == btnclear) {
+			JOptionPane.showMessageDialog(this, "You clicked On Clear Button");
+
+		txtusername.setText("");
+		txtpwd.setText("");
+		}
+		
+
 	}
 
 }
