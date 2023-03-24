@@ -1,67 +1,36 @@
-package com.code;
+package com.threadSynch;
 
-public class Account implements Comparable<Account>{
+public class Account {
 	
-	private Integer actno;
-	private String custname;
+	private int actid;
+	private String name;
 	private double balance;
-	public Account(int actno, String custname, double balance) {
+	public Account(int actid, String name, double balance) {
 		super();
-		this.actno = actno;
-		this.custname = custname;
+		this.actid = actid;
+		this.name = name;
 		this.balance = balance;
 	}
 	@Override
 	public String toString() {
-		return "Account [actno=" + actno + ", custname=" + custname + ", balance=" + balance + "]";
+		return "Account [actid=" + actid + ", name=" + name + ", balance=" + balance + "]";
 	}
-	public int getActno() {
-		return actno;
-	}
-	public void setActno(int actno) {
-		this.actno = actno;
-	}
-	public String getCustname() {
-		return custname;
-	}
-	public void setCustname(String custname) {
-		this.custname = custname;
-	}
+	
 	public double getBalance() {
 		return balance;
 	}
-	public void setBalance(double balance) {
-		this.balance = balance;
+	public void withdraw(double amount)
+	{
+		System.out.println("---withdraw ----");
+		this.balance=this.balance-amount;
+//		System.out.println("after Withdraw Balance="+balance);
 	}
-	@Override
-	public boolean equals(Object obj) {
-//downcasting
-		System.out.println("----equals----");
-		Account act=(Account)obj;
-		return this.actno==act.actno;
-
-	}
-	@Override
-	public int hashCode() {
-		System.out.println("---hashcode---");
-		return this.actno.hashCode();
-	}
-	@Override
-	public int compareTo(Account o) {
-		
-//		if(this.actno<o.actno)
-//			return -1;
-//		else if(this.actno>o.actno)
-//			return 1;
-//		else
-//			return 0;
-		return this.actno.compareTo(o.actno);
-		//return this.custname.compareTo(o.custname);
-		
+	public void deposite(double amount)
+	{
+		System.out.println("---deposite ----");
+		this.balance=this.balance+amount;
+		//System.out.println("after deposite Balance="+balance);
 	}
 
-	
-	
-	
-	
+
 }
